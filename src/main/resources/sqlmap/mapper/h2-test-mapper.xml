@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="h2test">
+
+	<update id="createH2TestTable">
+		CREATE TABLE IF NOT EXISTS H2_TEST (
+			seq INT NOT NULL,
+			id VARCHAR(50) NOT NULL,
+			name VARCHAR(200) NOT NULL
+		)
+	</update>
+
+	<insert id="insertH2Test" parameterClass="com.kks.txtest.dto.H2Test">
+		insert into H2_TEST (id, seq, name) values (#id#, #seq#, #name#)
+	</insert>
+	
+	<select id="selectH2Test" parameterClass="java.lang.String" resultClass="com.kks.txtest.dto.H2Test">
+		select * from H2_TEST where id = #id#
+	</select>
+	
+</sqlMap>
