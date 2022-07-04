@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kks.txtest.mybatis.mapper.MybatisH2TestMapper">
+	
+	<update id="createTestTable">
+		CREATE TABLE IF NOT EXISTS H2_TEST (
+			seq INT NOT NULL,
+			id VARCHAR(50) NOT NULL,
+			name VARCHAR(200) NOT NULL
+		)
+	</update>
+	
+  	<insert id="registH2Test" parameterType="com.kks.txtest.dto.H2Test">
+		insert into H2_TEST (id, seq, name) values (#{id}, #{seq}, #{name})
+	</insert>
+	
+	<select id="findH2TestList" parameterType="java.lang.String" resultType="com.kks.txtest.dto.H2Test">
+		select * from H2_TEST where id = #{id}
+	</select>
+	
+	
+</mapper>

@@ -12,10 +12,10 @@
 	</update>
 	
   	<insert id="insertH2Test">
-		insert into H2_TEST (id, seq, name) values (#id#, #seq#, #name#)
+		insert into H2_TEST (id, seq, name) values (#{id}, #{seq}, #{name})
 	</insert>
 	
 	<select id="selectH2Test" parameterType="java.lang.String" resultType="com.kks.txtest.dto.H2Test">
-		select * from H2_TEST where id = #id#
+		select * from H2_TEST where id = #{id}
 	</select>
 </mapper>

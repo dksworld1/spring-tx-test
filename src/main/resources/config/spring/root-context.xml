@@ -10,5 +10,6 @@
 	<import resource="datasource-context.xml" />
 	<import resource="tx-context.xml" />	
 	<import resource="sqlmap-context.xml" />
+	<import resource="mybatis-context.xml" />
 	<import resource="application-context.xml" />		
 </beans>

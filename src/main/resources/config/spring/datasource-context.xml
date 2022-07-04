@@ -42,10 +42,10 @@
     </bean>
     
     <bean id="testH2DataSourceMybatis" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${db.test.driver}" />
-		<property name="url" value="${db.test.url}" />
-		<property name="username" value="${db.test.username}" />
-		<property name="password" value="${db.test.password}" />
+		<property name="driverClassName" value="${db.test.h2.driver}" />
+		<property name="url" value="${db.test.h2.url}" />
+		<property name="username" value="${db.test.h2.username}" />
+		<property name="password" value="${db.test.h2.password}" />
 	</bean>
     		
 </beans>

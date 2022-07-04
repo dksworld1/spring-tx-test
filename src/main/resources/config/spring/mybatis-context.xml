@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-    <bean id="sampleSqlSeesionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sampleSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!-- <property name="dataSource" ref="testH2DataSource" /> -->
         <property name="dataSource" ref="testH2DataSourceMybatis" />
-        <property name="configLocation" value="classpath:config/sqlmap/mybatis-config.xml" />
-        <property name="mapperLocations" value="classpath:config/sqlmap/mybatis/*-mapper.xml" />
+        <property name="configLocation" value="classpath:config/mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*-mapper.xml" />
     </bean>
     
     <!-- sqlSession 방식 -->
 	<bean id="sampleSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg index="0" ref="sampleSqlSeesionFactory" />
+		<constructor-arg index="0" ref="sampleSqlSessionFactory" />
 	</bean>
 	
 	<!-- Dao interface 방식 -->
-	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
- 		<property name="mapperInterface" value="org.mybatis.spring.sample.mapper.UserMapper" />
-  		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	<bean id="mybatisH2TestMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+ 		<property name="mapperInterface" value="com.kks.txtest.mybatis.mapper.MybatisH2TestMapper" />
+  		<property name="sqlSessionFactory" ref="sampleSqlSessionFactory" />
 	</bean>
+	
+	<mybatis-spring:scan base-package="com.kks.txtest.mybatis.mapper" />
 		
 </beans>

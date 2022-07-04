@@ -5,7 +5,7 @@
 	
     <!--  sqlMapClient  설정 -->
     <bean id="defaultSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
-        <property name="configLocation" value="classpath:sqlmap/sqlmap-config.xml"/>
+        <property name="configLocation" value="classpath:config/sqlmap-config.xml"/>
         <property name="dataSource" ref="defaultDataSource" />
         <property name="transactionConfigProperties">
         <props>
@@ -17,7 +17,7 @@
 		
 	<!--  testH2SqlMapClient  설정 -->
     <bean id="testH2SqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
-        <property name="configLocation" value="classpath:sqlmap/sqlmap-config.xml"/>
+        <property name="configLocation" value="classpath:config/sqlmap-config.xml"/>
         <property name="dataSource" ref="testH2DataSource" />
         <property name="transactionConfigProperties">
         <props>
